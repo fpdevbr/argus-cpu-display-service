@@ -19,5 +19,3 @@ You can compile into an .exe with PyInstaller with the following command:
 ```bash
 pip install -r requirements.txt
 pyinstaller --onefile --noconsole --icon=exhaust-fan.ico argus-cpu-display-service.py
-
-
