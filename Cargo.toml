@@ -1,0 +1,34 @@
+[package]
+name = "argus-cpu-display-service"
+version = "2.0.0"
+edition = "2021"
+license = "MIT"
+publish = false
+description = "Show the Argus Monitor CPU temperature on a USB CPU-cooler display"
+
+[[bin]]
+name = "argus-cpu-display-service-r"
+path = "src/main.rs"
+
+[dependencies]
+windows-sys = { version = "0.59", features = [
+    "Win32_Devices_DeviceAndDriverInstallation",
+    "Win32_Devices_HumanInterfaceDevice",
+    "Win32_Foundation",
+    "Win32_Security",
+    "Win32_Storage_FileSystem",
+    "Win32_System_IO",
+    "Win32_System_Console",
+    "Win32_System_Memory",
+    "Win32_System_SystemInformation",
+    "Win32_System_SystemServices",
+    "Win32_System_Threading",
+] }
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+overflow-checks = false
